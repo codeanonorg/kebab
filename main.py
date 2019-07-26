@@ -1,5 +1,16 @@
-import discords
+import discord
+import json
 from discord.ext import commands
+
+
+# =========== data ======================
+
+data = None
+
+with open("data.json", "r") as file:
+	content = file.read()
+	data = json.loads(content)
+
 
 # =========== utils functions ===========
 cote = 0
@@ -30,15 +41,17 @@ async def kebab(ctx):
 	msg += str(cote)
 	msg += "```"
 	print('debug')
-	ctx.send(msg)
+	await ctx.send(msg)
 
+"""
 @bot.event
 async def on_message(msg):
 	global cote
 
 	if msg.author == "0x5AD":
 		cote = set_cote(msg.content)
-
+"""
 
 print("log")
-bot.run('')
+bot.run(data["token"])
+
