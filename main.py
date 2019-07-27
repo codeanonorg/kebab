@@ -28,12 +28,45 @@ def set_cote(txt):
 
 bot = commands.Bot(command_prefix='?')
 
+
+@bot.event
+async def on_ready():
+	game = discord.Game("Surveiller Tristan")
+	# affiche le statut
+	await bot.change_presence(status=discord.Status.online, activity=game)
+	print('*Bot is ready*')
+
+
+@bot.event
+async def on_message(msg):
+	"""
+		Process messages and update the Kebab cote>
+	"""
+
+	global cote
+	
+	# debug
+	print(msg.author)
+	
+	# update the cote here
+	# ...
+
+	# since on_message overwrite commands
+	# we need to manually process them 
+	await bot.process_commands(msg)
+
+
+
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
 
+
 @bot.command()
 async def kebab(ctx):
+	"""
+		A command to display the kebab cote.
+	"""
 	global cote
 
 	msg = "```"
@@ -43,15 +76,6 @@ async def kebab(ctx):
 	print('debug')
 	await ctx.send(msg)
 
-"""
-@bot.event
-async def on_message(msg):
-	global cote
 
-	if msg.author == "0x5AD":
-		cote = set_cote(msg.content)
-"""
-
-print("log")
 bot.run(data["token"])
 
