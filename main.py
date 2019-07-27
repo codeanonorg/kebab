@@ -1,16 +1,7 @@
 import discord
 import json
+import os
 from discord.ext import commands
-
-
-# =========== data ======================
-
-data = None
-
-with open("data.json", "r") as file:
-	content = file.read()
-	data = json.loads(content)
-
 
 # =========== utils functions ===========
 
@@ -80,5 +71,5 @@ async def kebab(ctx):
 	await ctx.send(msg)
 
 
-bot.run(data["token"])
+bot.run(os.environ["token"])
 
