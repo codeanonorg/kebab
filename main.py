@@ -13,16 +13,20 @@ with open("data.json", "r") as file:
 
 
 # =========== utils functions ===========
+
 cote = 0
 
 def set_cote(txt):
-	"""Determines the new kebab cote"""
+	"""
+		Determines the new kebab cote.
+	"""
 	
 	# test on txt here
 	# ...
 	
 	global cote
 	return cote + 1
+
 
 # =========== bot functions =============
 
@@ -54,7 +58,6 @@ async def on_message(msg):
 	# since on_message overwrite commands
 	# we need to manually process them 
 	await bot.process_commands(msg)
-
 
 
 @bot.command()
