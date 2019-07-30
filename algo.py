@@ -1,5 +1,17 @@
 """
-	Algorithms for text analysis.
+	Algorithms for ad-hoc text analysis.
+
+	This module provides 2 main classes for text analysis :
+	- Fragment
+	- Analyzer
+
+	[ The Fragment class ] is used to describe and anotate short fragment
+	of text. It gives a way of abstraction over words or short sentences
+	and their meaning.
+
+	[ The Analyzer class ] uses the Fragment class to process a long text,
+	estimate the general meaning of it and eventually compare a text to
+	a given context.
 """
 
 
@@ -10,7 +22,8 @@ class Fragment:
 
 	# == TYPES FOR FRAGMENTS ==
 	_type_0 = "TYPE_0"	# type for fragment to ignore
-	_type_1 = "TYPE_1" 	# type for other fragments
+	_type_1 = "TYPE_1" 	# type for emojis
+	_type_2 = "TYPE_2" 	# type for other fragments
 	# ... more to implement
 	# =========================
 
@@ -29,6 +42,23 @@ class Fragment:
 		self.type 	= self._get_type(txt)
 
 	
+	def _is_emoji(self, txt : str):
+		return (
+				txt == "XD"
+			or 	txt == "xD"
+			or 	txt == "Xd"
+			or 	txt == ";)"
+			or 	txt == ":)"
+			or 	txt == ":("
+			or 	txt == ";("
+			or 	txt == "X("
+			or 	txt == "X)"
+			or 	txt == "x)"
+			or 	txt == "x("
+			or 	txt == "^^"
+			)
+
+
 	def _get_type(self, txt : str):
 		"""
 			Get the type of text fragment.
@@ -37,10 +67,18 @@ class Fragment:
 		# TODOS
 		# -> better type determination
 
-		if len(txt) <= 2:
+		if self._is_emoji(txt):
+			return Fragment._type_1
+		elif len(txt) <= 2:
 			return Fragment._type_0
 		else:
-			return Fragment._type_1
+			return Fragment._type_2
+
+		#elif self._is_emoji(txt):
+		#	return Fragment._type_3
+		#elif self._is_emoji(txt):
+		#	return Fragment._type_3
+
 
 	
 	def __str__(self):
