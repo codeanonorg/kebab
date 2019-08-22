@@ -77,11 +77,11 @@ async def up(ctx):
 
 @bot.command()
 async def down(ctx):
-	"""
-		A command to decrement the kebab cote.
-	"""
-	
-	global cote
+    """
+        A command to decrement the kebab cote.
+    """
+    
+    global cote
 
     cote -= 1
     msg = "```"
