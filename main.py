@@ -27,11 +27,11 @@ async def on_message(msg):
     """
 
     global cote
-    
+
     # debug
     if msg.author == '0x5AD':
         print(msg.content)
-    
+
     # update the cote here
     # ...
 
@@ -80,7 +80,7 @@ async def down(ctx):
     """
         A command to decrement the kebab cote.
     """
-    
+
     global cote
 
     cote -= 1
@@ -91,6 +91,15 @@ async def down(ctx):
     await ctx.send(msg)
 
 
+@bot.command()
+async def sos(ctx, arg):
+    """
+        Emergency Call
+    """
+
+    msg = f'```c #include <{arg}.h>```'
+
+    await ctx.send(msg)
+
 
 bot.run(os.environ["token"])
-
