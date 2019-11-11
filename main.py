@@ -99,7 +99,6 @@ async def sos(ctx, arg):
 
     msg = "```c\n"
     msg += f"# include <{arg}.h>```"
-    msg += "\n```"
 
     await ctx.send(msg)
 
