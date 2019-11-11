@@ -97,7 +97,9 @@ async def sos(ctx, arg):
         Emergency Call
     """
 
-    msg = f'```c #include <{arg}.h>```'
+    msg = "```c\n"
+    msg += f"# include <{arg}.h>```"
+    msg += "\n```"
 
     await ctx.send(msg)
 
