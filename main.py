@@ -98,7 +98,7 @@ async def sos(ctx, arg):
     """
 
     msg = "```c\n"
-    msg += f"# include <{arg}.h>```"
+    msg += f"#include <{arg}.h>```"
 
     await ctx.send(msg)
 
